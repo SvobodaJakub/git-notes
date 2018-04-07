@@ -149,3 +149,33 @@ git config --global pack.packSizeLimit "100m"
 git config --global pack.threads "1"
 ```
 
+
+**when git refuses to checkout a remote branch**
+
+use `checkout --track`
+
+```
+
+$ git fetch -a
+$ git checkout custom_remote/a_branch_that_is_on_remote_but_not_locally
+Note: checking out 'custom_remote/a_branch_that_is_on_remote_but_not_locally'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b <new-branch-name>
+
+HEAD is now at b6c5b74... 
+$ git checkout master
+Previous HEAD position was b6c5b74... 
+Switched to branch 'master'
+Your branch is up-to-date with 'custom_remote/master'.
+$ git checkout --track custom_remote/a_branch_that_is_on_remote_but_not_locally
+Branch a_branch_that_is_on_remote_but_not_locally set up to track remote branch a_branch_that_is_on_remote_but_not_locally from custom_remote.
+Switched to a new branch 'a_branch_that_is_on_remote_but_not_locally'
+
+```

@@ -130,12 +130,22 @@ https://git-scm.com/blog/2011/07/11/reset.html
 **how to force garbage collection**
 
 https://stackoverflow.com/questions/14991916/garbage-collect-commits-in-git#14995269
+https://rtyley.github.io/bfg-repo-cleaner/
 
 ```
 rm -rf .git/refs/original/*
-git reflog expire --all --expire-unreachable=0
+git reflog expire --all --expire=all --expire-unreachable=all
 git repack -A -d
 git prune
-git gc --prune=now
+git gc --prune=all  --aggressive
+```
+
+if git gc consumes all memory and crashes
+https://stackoverflow.com/questions/3095737/is-there-a-way-to-limit-the-amount-of-memory-that-git-gc-uses
+
+```
+git config --global pack.windowMemory "50m"
+git config --global pack.packSizeLimit "100m"
+git config --global pack.threads "1"
 ```
 

@@ -179,3 +179,24 @@ Branch a_branch_that_is_on_remote_but_not_locally set up to track remote branch 
 Switched to a new branch 'a_branch_that_is_on_remote_but_not_locally'
 
 ```
+
+
+**sparse checkout**
+
+```
+$ git init ; git config core.sparseCheckout true
+$ echo "path_you_want" >> .git/info/sparse-checkout
+$ git remote add origin git@example.com:XXX/YYY
+$ git pull origin master
+```
+
+
+**limited-depth clone**
+
+Clones only the specified number of commits.
+
+```
+$ git clone --depth 1 gitrepo
+```
+
+
